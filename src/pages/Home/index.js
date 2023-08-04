@@ -11,6 +11,7 @@ import './homeRes.css';
 function Home(){
     const [filmes, setFilmes] = useState([]);
     const [filmesVotos, setFilmesVotor] = useState([]);
+    const [series, setSeries] = useState([]);
     // loading criado para quando a net estiver lenta..
     const [loading, setLoading] = useState(true);
 
@@ -52,9 +53,24 @@ function Home(){
         }
         loadingFilmesVotos();
     })
-
   
+    useEffect(()=> {
+        async function loadingSeries(){
 
+            const response = await api.get("tv/top_rated", {
+                params:{
+                    api_key: "1cd2fc50f766d3b6c3af9119c6551946",
+                    language: "pt-BR",
+                    page: 1,
+                }
+            })
+            setSeries(response.data.results.slice(0,20));
+            setLoading(false);
+
+        }
+        loadingSeries();
+    })
+  
 
     if(loading){
         return(
@@ -93,6 +109,22 @@ function Home(){
                 })}
 
             </div>
+
+            <h1>Séries</h1>
+            <div className="lista-filmes">
+                {series.map((item)=>{
+                    return(
+                        <article key={item.id}>
+                            <Link to={`/filme/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
+                            </Link>
+                        </article>
+                    )
+                })}
+
+            </div>
+
+
 
         </div>
     )
