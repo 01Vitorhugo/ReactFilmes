@@ -1,0 +1,17 @@
+@media (max-width: 767px){
+    .container{
+        width: 90%;
+    }
+    .container h1{
+        font-size: larger;
+    }
+    .container img{
+        height: 350px;
+    }
+    .container p{
+        font-size: small;
+    }
+    .container strong{
+        font-size: medium;
+    }
+}

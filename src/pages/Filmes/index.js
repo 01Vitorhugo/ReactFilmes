@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import './filme.css';
+import './filmeRes.css';
+
 import api from "../../services/api";
 
 function Filme(){

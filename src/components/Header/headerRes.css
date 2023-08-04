@@ -1,0 +1,15 @@
+@media (max-width: 767px) {
+    header {
+        height: 70px;
+    }
+    header img{
+        height: 200px;
+    }
+    .logo{
+        height: 100%;
+        width: 100px;
+    }
+    .favoritos{
+        font-size: small;
+    }
+}

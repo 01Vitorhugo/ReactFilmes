@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from '../../services/api';
 import { Link } from "react-router-dom";
 import './home.css';
+import './homeRes.css';
 
 
 // URL DA API /movie/now_playing
