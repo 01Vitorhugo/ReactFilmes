@@ -10,6 +10,10 @@ header{
     top: 0;
     left: 0;
     box-shadow: #000 2px 2px 7px;
+    z-index: 100;
+}
+header img{
+    height: 330px;
 }
 .logo{
     display: flex;

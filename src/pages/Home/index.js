@@ -9,6 +9,7 @@ import './home.css';
 
 function Home(){
     const [filmes, setFilmes] = useState([]);
+    const [filmesVotos, setFilmesVotor] = useState([]);
     // loading criado para quando a net estiver lenta..
     const [loading, setLoading] = useState(true);
 
@@ -27,11 +28,31 @@ function Home(){
 
         // slice(0,10) serve para ele listar os 10 primeiros.
        // console.log(response.data.results.slice(0,10));
-       setFilmes(response.data.results.slice(0,10));
+       // async sempre devolve o valor dentro da propriedade data
+       setFilmes(response.data.results.slice(0,20));
        setLoading(false);
     }
     loadFilmes();
     },[])
+
+    useEffect(()=> {
+        async function loadingFilmesVotos(){
+
+            const response = await api.get("movie/top_rated", {
+                params:{
+                    api_key: "1cd2fc50f766d3b6c3af9119c6551946",
+                    language: "pt-BR",
+                    page: 1,
+                }
+            })
+            setFilmesVotor(response.data.results.slice(0,20));
+            setLoading(false);
+
+        }
+        loadingFilmesVotos();
+    })
+
+  
 
 
     if(loading){
@@ -43,14 +64,29 @@ function Home(){
     }
 
     return(
-        <div className="container">
+        <div className="container-home">
+            <h1>Lançamentos</h1>
             <div className="lista-filmes">
                 {filmes.map((item)=>{
                     return(
                         <article key={item.id}>
-                            <strong>{item.title}</strong>
+                            <Link to={`/filme/${item.id}`}>
                             <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
-                            <Link to={`/filme/${item.id}`}>Acessar</Link>
+                            </Link>
+                        </article>
+                    )
+                })}
+
+            </div>
+
+                <h1>Mais votados</h1>
+            <div className="lista-filmes">
+                {filmesVotos.map((item)=>{
+                    return(
+                        <article key={item.id}>
+                            <Link to={`/filme/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
+                            </Link>
                         </article>
                     )
                 })}
