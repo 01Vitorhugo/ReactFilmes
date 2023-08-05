@@ -1,14 +1,16 @@
 @media (max-width: 767px) {
     header {
         height: 70px;
-    }
-    header img{
-        height: 200px;
+        overflow: hidden;
     }
     .logo{
         height: 100%;
         width: 100px;
     }
+    .logo img{
+        height: 200px;
+    }
+   
     .favoritos{
         font-size: small;
     }

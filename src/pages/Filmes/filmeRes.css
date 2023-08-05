@@ -1,6 +1,7 @@
 @media (max-width: 767px){
     .container{
         width: 90%;
+        margin-top: 50px;
     }
     .container h1{
         font-size: larger;

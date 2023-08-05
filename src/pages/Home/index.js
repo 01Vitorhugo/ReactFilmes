@@ -10,8 +10,11 @@ import './homeRes.css';
 
 function Home(){
     const [filmes, setFilmes] = useState([]);
+    const [filmes2, setFilmes2] = useState([]);
+    const [filmes3, setFilmes3] = useState([]);
     const [filmesVotos, setFilmesVotor] = useState([]);
-    const [series, setSeries] = useState([]);
+    const [filmesVotos2, setFilmesVotor2] = useState([]);
+    const [filmesVotos3, setFilmesVotor3] = useState([]);
     // loading criado para quando a net estiver lenta..
     const [loading, setLoading] = useState(true);
 
@@ -37,6 +40,42 @@ function Home(){
     loadFilmes();
     },[])
 
+    useEffect(()=>{
+        async function loadFilmes2(){
+
+        //AWAIT serve para ele esperar a api carregar antes de carregar outra coisa
+        const response = await api.get("movie/now_playing", {
+            // Parametros, Chave da api e linguagem.
+            params:{
+                api_key: "1cd2fc50f766d3b6c3af9119c6551946",
+                language: "pt-BR",
+                page: 2,
+            }
+        })
+       setFilmes2(response.data.results.slice(0,20));
+       setLoading(false);
+    }
+    loadFilmes2();
+    },[])
+
+    useEffect(()=>{
+        async function loadFilmes3(){
+
+        //AWAIT serve para ele esperar a api carregar antes de carregar outra coisa
+        const response = await api.get("movie/now_playing", {
+            // Parametros, Chave da api e linguagem.
+            params:{
+                api_key: "1cd2fc50f766d3b6c3af9119c6551946",
+                language: "pt-BR",
+                page: 3,
+            }
+        })
+       setFilmes3(response.data.results.slice(0,20));
+       setLoading(false);
+    }
+    loadFilmes3();
+    },[])
+
     useEffect(()=> {
         async function loadingFilmesVotos(){
 
@@ -53,22 +92,39 @@ function Home(){
         }
         loadingFilmesVotos();
     })
-  
-    useEffect(()=> {
-        async function loadingSeries(){
 
-            const response = await api.get("tv/top_rated", {
+    useEffect(()=> {
+        async function loadingFilmesVotos2(){
+
+            const response = await api.get("movie/top_rated", {
                 params:{
                     api_key: "1cd2fc50f766d3b6c3af9119c6551946",
                     language: "pt-BR",
-                    page: 1,
+                    page: 2,
                 }
             })
-            setSeries(response.data.results.slice(0,20));
+            setFilmesVotor2(response.data.results.slice(0,20));
             setLoading(false);
 
         }
-        loadingSeries();
+        loadingFilmesVotos2();
+    })
+
+    useEffect(()=> {
+        async function loadingFilmesVotos3(){
+
+            const response = await api.get("movie/top_rated", {
+                params:{
+                    api_key: "1cd2fc50f766d3b6c3af9119c6551946",
+                    language: "pt-BR",
+                    page: 3,
+                }
+            })
+            setFilmesVotor3(response.data.results.slice(0,20));
+            setLoading(false);
+
+        }
+        loadingFilmesVotos3();
     })
   
 
@@ -82,7 +138,7 @@ function Home(){
 
     return(
         <div className="container-home">
-            <h1>Lançamentos</h1>
+            <h1>Lançamentos / Recentes</h1>
             <div className="lista-filmes">
                 {filmes.map((item)=>{
                     return(
@@ -93,7 +149,30 @@ function Home(){
                         </article>
                     )
                 })}
+            </div>
 
+            <div className="lista-filmes">
+                {filmes2.map((item)=>{
+                    return(
+                        <article key={item.id}>
+                            <Link to={`/filme/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
+                            </Link>
+                        </article>
+                    )
+                })}
+            </div>
+
+            <div className="lista-filmes">
+                {filmes3.map((item)=>{
+                    return(
+                        <article key={item.id}>
+                            <Link to={`/filme/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
+                            </Link>
+                        </article>
+                    )
+                })}
             </div>
 
                 <h1>Mais votados</h1>
@@ -110,9 +189,8 @@ function Home(){
 
             </div>
 
-            <h1>Séries</h1>
             <div className="lista-filmes">
-                {series.map((item)=>{
+                {filmesVotos2.map((item)=>{
                     return(
                         <article key={item.id}>
                             <Link to={`/filme/${item.id}`}>
@@ -124,6 +202,18 @@ function Home(){
 
             </div>
 
+            <div className="lista-filmes">
+                {filmesVotos3.map((item)=>{
+                    return(
+                        <article key={item.id}>
+                            <Link to={`/filme/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title}/>
+                            </Link>
+                        </article>
+                    )
+                })}
+
+            </div>
 
 
         </div>
