@@ -43,5 +43,33 @@
     transition: 0.2s;
 }
 .lista-filmes img:hover{
-    transform: scale(1.2);
+   border: 3px solid #fff;
+}
+.links{
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+.links button{
+    cursor: pointer;
+    margin: 0 30px;
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: solid 2px #fff;
+}
+.links button:hover{
+    border: solid 3px #fff;
+}
+button a{
+    text-decoration: none;
+    color: #fff;
+}
+.pg-color{
+    background-color: #cc0000 !important;
+   
 }

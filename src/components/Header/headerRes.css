@@ -1,7 +1,7 @@
 @media (max-width: 767px) {
     header {
         height: 70px;
-        overflow: hidden;
+
     }
     .logo{
         height: 100%;
