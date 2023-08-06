@@ -10,4 +10,7 @@
     .lista-filmes img{
         width: 80px;
     }
+    .links button{
+        width: 130px;
+    }
 }
