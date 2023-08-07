@@ -10,6 +10,7 @@ import FilmesNext4 from "./pages/NextFilmes/filmes4";
 import FilmesVot2 from "./pages/NextFilmes/filmesvot2";
 import FilmesVot3 from "./pages/NextFilmes/filmesvot3";
 import FilmesVot4 from "./pages/NextFilmes/filmesvot4";
+import Favoritos from "./pages/Favoritos";
 
 
 function RoutesApp(){
@@ -26,6 +27,8 @@ function RoutesApp(){
                 <Route path="/filme/maisvotados/pagina2" element={ <FilmesVot2/> }/>
                 <Route path="/filme/maisvotados/pagina3" element={ <FilmesVot3/> }/>
                 <Route path="/filme/maisvotados/pagina4" element={ <FilmesVot4/> }/>
+
+                <Route path="/favoritos" element={ <Favoritos/> } />
 
                 <Route path="*" element={ <Error/> }/>
             </Routes>
