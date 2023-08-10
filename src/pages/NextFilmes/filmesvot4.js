@@ -44,12 +44,10 @@ function FilmesVot3(){
                     )
                 })}
             </div>
-            <div className="links">
-                <button><Link to="/">Home</Link></button>
-                <button> <Link to="/filme/maisvotados/pagina2">Página 2</Link></button>
-                <button ><Link to="/filme/maisvotados/pagina3"> Página 3</Link></button>
-                <button  className="pg-color"><Link to="/filme/maisvotados/pagina4"> Página 4</Link></button>
-
+            <div className="links-2">
+                <button><Link to="/filme/pagina3"><img src={require('../../imgs/arrow-small-left.png')} alt="" /></Link></button>
+                <h2>Página 4</h2>
+                <button><Link to="/"><img src={require('../../imgs/homeIcon.png')} alt="" className="img-home"/></Link></button>
             </div>
         </div>
     )

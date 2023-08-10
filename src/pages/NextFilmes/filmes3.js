@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
+import './next.css'
 
 function FilmesNext3() {
 
@@ -46,12 +47,10 @@ function FilmesNext3() {
                 })}
 
             </div>
-            <div className="links">
-                <button><Link to="/">Home</Link></button>
-                <button> <Link to="/filme/pagina2">Página 2</Link></button>
-                <button className="pg-color"><Link to="/filme/pagina3"> Página 3</Link></button>
-                <button><Link to="/filme/pagina4"> Página 4</Link></button>
-
+            <div className="links-2">
+                <button><Link to="/filme/pagina2"><img src={require('../../imgs/arrow-small-left.png')} alt="" /></Link></button>
+                <h2>Página 3</h2>
+                <button><Link to="/filme/pagina4"><img src={require('../../imgs/arrow-small-right.png')} alt="" /></Link></button>
             </div>
         </div>
     )
